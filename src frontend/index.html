@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+<style type="text/css">
+.center1 {
+  display: block;
+  margin-top: 170px;
+  margin-left: auto;
+  margin-right: auto;
+}</style>
+  <title>InvestoAvenue</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.png">
+
+  <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();   
+    });
+    function openNav() {
+  document.getElementById("myNav").style.height = "100%";
+}
+
+/* Close when someone clicks on the "x" symbol inside the overlay */
+function closeNav() {
+  document.getElementById("myNav").style.height = "0%";
+}
+paypal.Buttons({
+
+// Set up the transaction
+createOrder: function(data, actions) {
+    return actions.order.create({
+        purchase_units: [{
+            amount: {
+                value: '0.01'
+            }
+        }]
+    });
+},
+
+// Finalize the transaction
+onApprove: function(data, actions) {
+    return actions.order.capture().then(function(details) {
+        alert('Transaction completed by ' + details.payer.name.given_name + '! Your Report is generated and downloaded to Downloads.');
+    
+    });
+}
+
+}).render('#paypal-button-container');
+
+    </script>
+</head>
+<body>
+  <app-root><img src="/assets/wait.gif" alt="" class="center1" style="width: 200px;height: 200px;"></app-root>
+</body>
+</html>
