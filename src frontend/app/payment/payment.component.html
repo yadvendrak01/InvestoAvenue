@@ -1,0 +1,143 @@
+
+<div class="container fromTop">
+  <div class="row">
+      <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+          <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                  <address>
+                      <strong> <h2>  <img src="../assets/favicon.png" alt="" style="height:50px;width:50px;margin-left: 30px;"> </h2>
+                      <h4>Investo Avenue</h4></strong>
+                      <br>
+                      No. 350,Hebbal Electronics City
+                      <br>
+                      Hootagalli, Mysuru, Karnataka 570027
+                      <br>
+                  </address>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                  <p>
+                      <em>Date: {{today|date: full}}</em>
+                  </p>
+                  <p>
+                      <em>Receipt Id: <b> IA{{recipientId|number:'1.0-0'}} </b></em>
+                  </p>
+                  <div style="margin-top:50px;">
+                  <p>
+                    <em>{{client.name}}</em>
+                  </p>
+                  <p>
+                    <em>{{client.contactNo}}</em>
+                  </p>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="text-center">
+                  <h1>Receipt</h1>
+              </div>
+              <table class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th>Service </th>
+                          <th>#</th>
+                          <th class="text-center">Price</th>
+                          <th class="text-center">Total</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngIf="client.typeOfClient=='individual'">
+                          <td class="col-md-9"><h4><em>Investment Advice Seeked</em></h4></td>
+                          <td class="col-md-1" style="text-align: center"> 1 </td>
+                          <td class="col-md-1 text-center">{{1500| currency: 'INR':true}}</td>
+                          <td class="col-md-1 text-center">{{1500| currency: 'INR':true}}</td>
+                      </tr>
+                      <tr *ngIf="client.typeOfClient=='mediumScaleIndustries'">
+                        <td class="col-md-9"><h4><em>Investment Advice Seeked</em></h4></td>
+                        <td class="col-md-1" style="text-align: center"> 1 </td>
+                        <td class="col-md-1 text-center">{{4000| currency: 'INR':true}}</td>
+                        <td class="col-md-1 text-center">{{4000| currency: 'INR':true}}</td>
+                    </tr>
+                    <tr *ngIf="client.typeOfClient=='corporates'">
+                        <td class="col-md-9"><h4><em>Investment Advice Seeked</em></h4></td>
+                        <td class="col-md-1" style="text-align: center"> 1 </td>
+                        <td class="col-md-1 text-center">{{6000| currency: 'INR':true}}</td>
+                        <td class="col-md-1 text-center">{{6000| currency: 'INR':true}}</td>
+                    </tr>
+                      <tr>
+                          <td class="col-md-9"><h4><em>Extra Charges</em></h4></td>
+                          <td class="col-md-1" style="text-align: center"> - </td>
+                          <td class="col-md-1 text-center">{{1000| currency: 'INR':true}}</td>
+                          <td class="col-md-1 text-center">{{1000| currency: 'INR':true}}</td>
+                      </tr>
+                      <tr>
+                          <td>   </td>
+                          <td>   </td>
+                          <td class="text-right">
+                          <p>
+                              <strong>Subtotal: </strong>
+                          </p>
+                          <p>
+                              SGST 
+                          </p>
+                          <p>
+                            CGST 
+                        </p>
+                      </td>
+                          <td class="text-center" *ngIf="client.typeOfClient=='individual'">
+                          <p>
+                              <strong>{{2500| currency: 'INR':true}}</strong>
+                          </p>
+                          <p>
+                           {{ 225| currency: 'INR':true}}
+                          </p>
+                          <p>
+                            {{225| currency: 'INR':true}}
+                        </p></td>
+                        <td class="text-center" *ngIf="client.typeOfClient=='mediumScaleIndustries'">
+                            <p>
+                                <strong>{{5000| currency: 'INR':true}}</strong>
+                            </p>
+                            <p>
+                             {{ 450| currency: 'INR':true}}
+                            </p>
+                            <p>
+                              {{450| currency: 'INR':true}}
+                          </p></td>
+                          <td class="text-center" *ngIf="client.typeOfClient=='corporates'">
+                            <p>
+                                <strong>{{7000| currency: 'INR':true}}</strong>
+                            </p>
+                            <p>
+                             {{ 630| currency: 'INR':true}}
+                            </p>
+                            <p>
+                              {{630| currency: 'INR':true}}
+                          </p></td>
+                      </tr>
+                      <tr>
+                          <td>   </td>
+                          <td>   </td>
+                          <td class="text-right"><h4><strong>Total: </strong></h4></td>
+                          <td *ngIf="client.typeOfClient=='individual'" class="text-center text-danger"><h4><strong>{{2950| currency: 'INR':true}}</strong></h4></td>
+                          <td *ngIf="client.typeOfClient=='mediumScaleIndustries'" class="text-center text-danger"><h4><strong>{{5900| currency: 'INR':true}}</strong></h4></td>
+                          <td *ngIf="client.typeOfClient=='corporates'" class="text-center text-danger"><h4><strong>{{8260| currency: 'INR':true}}</strong></h4></td>
+                      </tr>
+                  </tbody>
+              </table>
+
+              <div id="paypal-button-container" > 
+
+              </div>
+              <button type="button" class="btn btn-success btn-lg btn-block" (click)="payNow()">
+                    Home   <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+          </div>
+      </div>
+  </div>
+  </div>
+
+  <!--
+                    <button type="button" class="btn btn-success btn-lg btn-block" (click)="payNow()">
+                  Pay Now   <span class="glyphicon glyphicon-chevron-right"></span>
+              </button>
+  -->

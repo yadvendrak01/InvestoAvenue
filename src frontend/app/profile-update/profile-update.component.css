@@ -1,0 +1,9 @@
+
+  .lr-color{
+    background: linear-gradient(to right, #be93c5, #7bc6cc);
+    opacity: 0.9;
+    border-radius: 15px;
+}
+.fromTop { 
+  background: linear-gradient(to bottom, #7b4397, #dc2430); 
+}

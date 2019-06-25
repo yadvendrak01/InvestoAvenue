@@ -1,0 +1,52 @@
+.container {
+    width:80%;
+    height: 80%;
+    border-radius: 15px; 
+   background: rgba(0,0,0,0.8);
+    position: relative;
+}
+.useless{
+    height: 40px;
+    width: 100%;
+}
+
+.container h2{ text-align:center;
+color:rgb(231, 220, 220);
+ 
+}
+
+.container p {text-align: center;
+color:rgb(231, 220, 220);
+
+}
+
+.container h3 {
+        padding-left: 30px;
+        padding-top: 30px;
+        color:rgb(231, 220, 220);
+        margin-left: 100px;
+}
+
+#one { padding-top: 40px;
+
+}
+#icon {transform: translate(125px);
+
+}
+#three {
+margin-left: 100px;
+}
+
+.big {
+    font-weight: bold;
+     color:rgb(231, 220, 220);
+}
+
+.para { margin-left: auto;
+margin-right: auto;
+text-align: justify;
+
+}
+.uselessSpan{
+    margin-left: 150px;
+}

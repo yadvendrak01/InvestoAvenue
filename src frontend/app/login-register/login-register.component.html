@@ -1,0 +1,121 @@
+<div>
+      <video autoplay muted loop id="myVideo">
+        <source src="../assets/0189_citypeoplebridgeclose_540p.mov" type="video/mp4">
+      </video>
+    
+
+<div class="formTop" *ngIf="toShowLogin" id="#img" style="background-image:url(../assets/logingBack.jpg); background-size: cover;" >
+    
+  <div class="row ">
+     
+    <div class="col-md-5 col-md-offset-3"   >
+       
+      <div class="panel lr-color">
+        <div class="panel-heading lr-color colwhite"><h2 style="text-align:center">Enter Details to Login</h2></div>
+        <div class="panel-body lr-color colblue">          
+          <!-- for login --> 
+    <form [formGroup]="loginForm">
+      <div class="form-group">
+        <label for="userId"><i class="fa fa-user"></i>  Username:</label>
+        <input type="text" id="userId" class="form-control" formControlName="userId">
+        <span class="text-danger" *ngIf="loginForm.controls.userId.invalid && loginForm.controls.userId.dirty">User Id is Required and should be minimum 8 letters</span>
+      </div>
+      
+      <div class="form-group">
+        <label for="password"><i class="fa fa-lock"></i> Password</label>
+        <input type="password" id="password" class="form-control" formControlName="password">
+        <span class="text-danger" *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.dirty">Password is Required and should be minimum 8 letters</span>
+      </div>
+  
+      <div class="form-group">
+        <button class="btn btnstyle"  (click)="login()" [disabled]="loginForm.invalid || loginForm.pristine" >Login</button>
+      </div>
+    </form>
+    <p class="colwhite">New User ?? <button class='btn btn-link colblue' (click)="toToggleRegisterLogin()"> Click here to Register</button></p>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <div class="fromTop" id="#img" >
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3" *ngIf="toShowRegister">
+      <div class="panel lr-color">
+        <div class="panel-heading lr-color colwhite"><h2 style="text-align:center">Register for better Future</h2></div>
+        <div class="panel-body lr-color">        <!-- for Register -->
+          <img src="./assets/investPic.jpg" class="img-responsive" alt="">
+          <h3 class="colblue"> Details to Register</h3>
+        <form class="" [formGroup]="registerForm">
+  
+            <div class="form-group" class="colwhite">
+                <label for="typeOfClient" >Type :</label>
+                &nbsp;&nbsp;<input type="radio" id="typeOfClient1"  (change)="forDate()" class="" value="individual" formControlName="typeOfClient">Individual &nbsp;&nbsp;&nbsp;
+                    <input type="radio" id="typeOfClient2" (change)="forDate()" class="" value="mediumScaleIndustries" formControlName="typeOfClient">Medium Scale Industries &nbsp;&nbsp;&nbsp;
+                  <input type="radio" id="typeOfClient3" (change)="forDate()" class="" value="corporates" formControlName="typeOfClient">Corporates  &nbsp;&nbsp;&nbsp;
+                    <input type="radio" id="typeOfClient4" (change)="forDate()" class="" formControlName="typeOfClient">Others<br>
+                    <span class="text-danger" *ngIf="registerForm.controls.typeOfClient.invalid && registerForm.controls.typeOfClient.dirty">Please specify the type</span>
+              </div>
+              <div class="form-group" *ngIf="toShowOthers">
+                  <input type="text" formControlName="typeOfClient" class="form-control">
+                </div>
+  
+          <div class="form-group" class="colblue">
+            <label for="name"><i class="fa fa-user"></i>{{toShowFirm}} Name :</label>
+            <input maxlength="15" type="text" id="name"  formControlName="name"class="form-control">
+            <span class="text-danger" *ngIf="registerForm.controls.name.invalid && registerForm.controls.name.dirty"> Name is Required and should be minimum 4 letters</span>
+          </div>
+  
+          <div class="form-group" class="colblue">
+            <label for="userId"><i class="fa fa-pencil-square-o"></i>User Id:</label>
+            <input maxlength="12" type="text" id="userId" (keyup)="getUserId()" class="form-control" formControlName="userId">
+            <span class="text-danger" *ngIf="registerForm.controls.userId.invalid && registerForm.controls.userId.dirty">User Id is Required Field </span>
+            <span class="text-danger" *ngIf="registerForm.controls.userId.valid && registerForm.controls.userId.dirty && userIdBool">{{userIdMessage}}</span>
+            <span class="text-success" *ngIf="registerForm.controls.userId.valid && registerForm.controls.userId.dirty && !userIdBool" style="color:green">{{userIdMessage}}</span>
+          </div>
+          <!-- (keyup)="getUserId()" -->
+          <div class="form-group" class="colblue">
+              <label for=""><i class="fa fa-envelope"></i> {{toShowFirm}}Email:</label>
+              <input maxlength="28" type="email" id="email" class="form-control" formControlName="email">
+              <span class="text-danger" *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.dirty">Email Id is Required Field</span>
+            </div>
+  
+            <div class="form-group" class="colblue">
+                <label for="contactNo"><i class="fa fa-phone"></i> Phone Number:</label>
+                <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" type="number" id="contactNo" class="form-control" formControlName="contactNo">
+                <span class="text-danger" *ngIf="registerForm.controls.contactNo.invalid && registerForm.controls.contactNo.dirty">Number is Required and Should be 10 digit number</span>
+              </div>
+  
+  
+  
+          <div class="form-group" class="colblue">
+            <label for="cdate"><i class="fa fa-calendar"></i> {{toShowDate}} :</label>
+            <input type="date" id="cdate" class="form-control" formControlName="cdate">
+            <span class="text-danger" *ngIf="registerForm.controls.cdate.invalid &&  registerForm.controls.cdate.dirty">{{toShowDate}} is Required</span>
+          </div>
+  
+          <div class="form-group" class="colblue">
+              <label for="password"><i class="fa fa-lock"></i> Password:</label><a><i data-toggle="tooltip" title="Password should contain one Upper Case , one Lower Case , one Number and one Special Character.Pasword should 8-12 characters long." data-placement="left" style="float:right;" class="glyphicon glyphicon-info-sign"></i></a>
+              <input type={{type}} id="password" class="form-control" formControlName="password"><a (click)="eye()"><span class="glyphicon glyphicon-eye-{{eyes}} field-icon toggle-password eyecss"></span></a>
+              <span class="text-danger" *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.dirty">Password is Required.</span>
+            </div>
+            <!-- <span toggle="#password-field" class="glyphicon glyphicon-eye-open field-icon toggle-password"></span> -->
+  
+          <div class="form-group" class="colblue">
+              <label for="firstPassword"><i class="fa fa-lock "></i> Confirm Password:</label>
+              <input type={{type2}} id="firstPassword" class="form-control" [(ngModel)]="firstPassword" [ngModelOptions]="{standalone: true}"><a (click)="eye2()"><span class="glyphicon glyphicon-eye-{{eyes2}} field-icon toggle-password eyecss"></span></a>
+              <span class="text-danger" *ngIf="registerForm.controls.password.valid && registerForm.get('password').value!=firstPassword && firstPassword!=null">Password did not Match</span>
+              <!-- <span class="text-danger" *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.dirty">Password is Required</span> -->
+            </div>
+          
+          <!-- {{firstPassword!=null}} -->
+          <div class="form-group " style="padding-top:30px;">
+              <button class="btn btnstyle" (click)="register()" [disabled]="registerForm.invalid || registerForm.pristine || userIdBool || registerForm.get('password').value!=firstPassword" >Register</button>
+          </div>   
+        </form>
+        <p class="colwhite">Already Registered ?? <button class='btn btn-link colblue' (click)="toToggleRegisterLogin()"> Click here to Login</button></p>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+</div>

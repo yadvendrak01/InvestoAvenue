@@ -1,0 +1,117 @@
+<div  style="background-image: url(./assets/fp1.jpg);background-size: cover;padding-left: 0px;">
+    <div class="container-fluid">
+<div class="row fromTop">
+    <div class="col-md-9 col-md-offset-2">
+            <div class="jumbotron">
+                <h1 class="display-4">Welcome to InvestoAvenue {{name}}</h1>
+                <p class="lead"><i>InvestoAvenue is a specialist wealth handling firm that is focused towards personalized financial advisory, thus catering to the asset management requirements of its clients. Financial advices provided by InvestoAvenue is based on understanding the client’s present and future cash flows and financial objectives.
+                    </i>
+                </p>
+                <hr class="my-4">
+                <div *ngIf="client==null">
+                        <h2 style="font-family:serif;font-style: italic">Warren  Buffett’s  Two Rules For Investing</h2>
+                        <i>  <b> <p style="text-align: center;"> <span style="font-size: 40px;">“</span>  Rule No. 1: Never lose money. <br> Rule No. 2: Never forget rule No.1 <span style="font-size: 40px;">  ”</span></p></b></i>
+                    <p class="lead">
+                      <a class="btn btn-danger btn-lg" [routerLink]="['/login-register']" role="button">Login/Register</a>
+                    </p>
+              </div>
+              <div *ngIf="client!=null">
+                    <h2 style="font-family:serif;font-style: italic">Warren  Buffett’s  Two Rules For Investing</h2>
+               <i>  <b> <p style="text-align: center;"> <span style="font-size: 40px;">“</span>  Rule No. 1: Never lose money. <br> Rule No. 2: Never forget rule No.1 <span style="font-size: 40px;">  ”</span></p></b></i>
+                  <p class="lead">
+                    <a class="btn btn-danger btn-lg" [routerLink]="['/about-us']" role="button">About Us</a>
+                  </p>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+    <div class="container" id="two">
+        <div class="row">
+            <div class="col-md-3" id="first">
+                <i class="glyphicon glyphicon-usd" style="font-size:75px; color:rgb(70, 89, 172);" id="design"></i>
+        <h3 id="headi">Financial Planning</h3>  
+        <p>We'll help you make sensible decisions about money that can help you achieve your goals in life and can further help you.</p>
+    </div>
+    <div class="col-md-3 col-md-offset-1" id="second">
+        <i class="glyphicon glyphicon-signal" style="font-size:75px; color:rgb(70, 89, 172);" id="design1"></i>
+         <h3 id="headi">Risk Management</h3>  
+            <p>Risk management is intended to manage financial and other losses associated with risks to your assets.</p>
+        </div>
+        <div class="col-md-3 col-md-offset-1" id="third">
+            <i class="glyphicon glyphicon-briefcase" style="font-size:75px; color:rgb(70, 89, 172);" id="design2"></i>
+                <h3 id="headi">Retirement Planning</h3>  
+                <p>Use our strategies and retirement advice, including retirement calculators to help you retire faster.</p>
+            </div>
+    </div>
+    
+    
+    </div>
+
+     <!-- <div class="container" *ngIf="userFeedback!=null">
+        <div class="row" >
+          <h1 style="text-align: center;text-decoration-style:solid;color: dodgerblue;">From our Customers</h1>
+          <div *ngFor="let feedback of userFeedback">
+                    <div class="col-xs-12 col-md-4">
+                <div class="well well-sm" >
+                    <div class="row" id="review" >
+                            <div class="col-xs-12 col-md-12" id="ten">
+                                    <b>{{feedName[feedback.userId] | uppercase}}</b>
+                                    <hr style=" height: 1px; background-color: gray;">
+                                    <p style="padding-top: 5px;">
+                                      <span style="font-size: 40px;">“</span>  
+                                      {{feedback.feedbackMessage}}  <span style="font-size: 40px;">  ”</span></p>
+                                     
+                                  </div>
+                        <div class="col-xs-12 col-md-12 col-sm-6 col-lg-6 text-center">
+                            <h1 class="rating-num">
+                                {{feedback.star}} star</h1>
+                            <div class="rating" style="display:inline;">
+                              <div *ngFor="let item of createRange(5);" style="display:inline;">
+                                  <span class="glyphicon glyphicon-star" *ngIf="item<=feedback.star"></span>
+                                  <span class="glyphicon glyphicon-star-empty" *ngIf="item>feedback.star"></span>
+                              </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+          </div>
+    
+        </div>
+    </div>   -->
+
+<div class="container" *ngIf="userFeedback!=null" id="lower">
+        <div *ngFor="let feedback of userFeedback">
+    <div class="card1">
+          <h3><b>{{feedName[feedback.userId] | uppercase}}</b></h3>
+        <p class="small">{{feedback.feedbackMessage}} 
+</p>
+    
+        <!-- <img src="\assets\avtar.png" alt="John" style="width:100%"> -->
+        <h1 class="rating-num">
+            {{feedback.star}} star</h1>
+        <div class="rating" style="display:inline;">
+          <div *ngFor="let item of createRange(5);" style="display:inline;">
+              <span class="glyphicon glyphicon-star" *ngIf="item<=feedback.star"></span>
+              <span class="glyphicon glyphicon-star-empty" *ngIf="item>feedback.star"></span>
+          </div>
+        </div>
+          <div class="go-corner">
+           <div class="go-arrow">
+  →
+       </div>
+   </div>
+</div>
+</div>
+</div>
+
+
+
+   

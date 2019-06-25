@@ -1,0 +1,93 @@
+
+
+ <div class="container-fluid">
+<nav id="navTop" *ngIf="client==null">
+  <div id="myNav" class="overlay">
+  
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  
+    <div class="overlay-content">
+      
+          <a href=""> <i> <b> Investo Avenue </b> </i></a>
+          <a href="/about-us"> About Us</a>
+          <a href="/feedback"> feedback</a>
+          <a href="login-register">Login</a>
+          <a href="team">Our Team</a>
+          </div>
+  
+  </div>
+  <div type="checkbox" class="check"></div>
+  <span onclick="openNav()" id="two"> <span class="glyphicon glyphicon-menu-hamburger" id="one"></span></span>
+  </nav>
+
+
+  <nav id="navTop" *ngIf="client!=null">
+
+    <div type ="checkbox" class="check-box1"></div>
+      <li class="dropdown dropdown-submenu dd"><a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user user"></i></a>
+        <ul class="dropdown-menu ">
+            <li><a><b>NAME:</b>{{client.name}}</a></li>
+            <li><a><b>USER ID:</b>{{client.userId}}</a></li>
+            <li><a><b>EMAIL:</b>{{client.email}}</a></li>
+          <li><a><b>DOB:</b> {{client.cdate | date:'longDate'}}</a></li>
+          <li><a><b>CONTACT NO.:</b>{{client.contactNo}} </a></li>
+        </ul>
+      </li>
+
+    <div id="myNav" class="overlay">
+
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    
+      <div class="overlay-content">
+        
+            <a href=""> <i> <b> Investo Avenue </b> </i></a>
+            <a href="profile-update">Update Profile</a>
+            <a href="add-detail">Investment Advice</a>
+            <a href="feedback"> Feedback</a>
+            <a href="about-us"> About Us</a>
+            <div class="out"><a (click)="logout()" class="btn btn-link" ><span class="glyphicon glyphicon-log-out"></span> Sign Out</a> </div>
+            </div>
+    
+    </div>
+    <div type="checkbox" class="check" ></div>
+    <span onclick="openNav()" id="two"> <span class="glyphicon glyphicon-menu-hamburger" id="one"></span></span>
+    </nav>
+  
+  
+  </div> 
+  
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+
+
+  <footer class="footer-distributed">
+
+      <div class="footer-right">
+  
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-github"></i></a>
+  
+      </div>
+  
+      <div class="footer-left">
+  
+        <p class="footer-links">
+          <a href="">Home</a>
+          ·
+          <a href="/about-us"> About Us</a>
+          ·
+          <a href="/feedback">feedback</a>
+          ·
+          <a href="login-register">Login</a>
+          ·
+          <a href="team">Team</a>
+        </p>
+  
+        <p>InvestoAvenue &copy; 2015</p>
+      </div>
+  
+    </footer>
+  

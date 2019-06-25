@@ -1,0 +1,221 @@
+.out a:hover{
+    background-color: rgb(240, 76, 76);
+
+}
+.out{
+    padding: 0px 10px;
+}
+
+.dropdown:hover>.dropdown-menu {
+    display:block;
+    position: -webkit-sticky;
+    position: absolute;
+    margin-top: 7rem;
+    right: 17px;
+    margin-left: 80%;
+    z-index: 2000;
+    /* margin-left: 50rem; */
+    
+    /* margin-left: 75%; */
+  }
+  
+  .dropdown>.dropdown-toggle:active {
+    pointer-events: none;
+  }
+
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */    
+  height: 0%;
+  width: 100%;
+  position: fixed; /* Stay in place */
+  z-index: 2001; /* Sit on top */
+  left: 0;
+  bottom: 0;
+  background-color: rgb(0,0,0); /* Black fallback color */
+  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 25%; /* 25% from the top */
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #f17d10;
+  text-decoration: underline;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  transition: 0.3s ease;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+
+  }
+
+
+}
+#one { 
+        padding-left: 20px;
+        font-size: 30px;
+        color:rgb(0, 0, 0);
+        height: 12;
+        padding-bottom: 0px;
+        cursor: pointer;
+        margin-top: 1.8rem;
+        position: fixed;
+        top:10x;
+        z-index: 2000;
+
+}
+
+.check{
+    background-color: #fff;
+    width: 5rem;
+    height: 5rem;
+    position: fixed;
+    top:0px;
+    z-index: 1999;
+    margin-top: 1rem; 
+    border-radius: 50%; 
+    margin-left:1rem;
+}
+
+.check-box1{
+    background-color: #fff;
+    width: 5rem;
+    height: 5rem;
+    position: fixed;
+    z-index: 1999;
+    margin-top: 1rem; 
+    right: 5px;
+    border-radius: 50%;   
+}
+
+.user{
+    font-size: 3.5rem;
+    position: fixed;
+    z-index: 2000;
+    margin-top: 1.7rem; 
+    margin-left:3.2rem;
+    cursor: pointer;
+    right: 17px;
+}
+
+.dd{
+    list-style-type: none;
+}
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+
+.footer-distributed{
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: normal 16px sans-serif;
+
+	padding: 45px 50px;
+
+}
+
+
+
+.footer-distributed .footer-left p{
+	color:  #8f9296;
+	font-size: 14px;
+	margin: 0;
+}
+
+/* Footer links */
+
+.footer-distributed p.footer-links{
+	font-size:18px;
+	font-weight: bold;
+	color:  #ffffff;
+	margin: 0 0 10px;
+	padding: 0;
+}
+
+.footer-distributed p.footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+	text-decoration: none;
+	color:  inherit;
+}
+
+.footer-distributed .footer-right{
+	float: right;
+	margin-top: 6px;
+	max-width: 180px;
+}
+
+.footer-distributed .footer-right a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-left: 3px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 600px) {
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-right{
+		text-align: center;
+	}
+
+	.footer-distributed .footer-right{
+		float: none;
+		margin: 0 auto 20px;
+	}
+
+	.footer-distributed .footer-left p.footer-links{
+		line-height: 1.8;
+	}
+}
+
+

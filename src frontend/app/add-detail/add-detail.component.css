@@ -1,0 +1,103 @@
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+    background-color: transparent;
+    width: 350px;
+    height: 300px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  }
+  
+
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  
+  /* Style the front side (fallback if image is missing) */
+  .flip-card-front {
+    background-color:#bbb;
+    color: black;
+  }
+  
+  /* Style the back side */
+  .flip-card-back {
+    background-color: burlywood;
+    color: black;
+    transform: rotateY(180deg);
+  }
+  .card-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .inside{
+    padding-top:4rem;
+    padding-bottom: 7rem;
+    color:white;
+    text-align:center;
+  }
+.adviceButton{
+  background-color: #24a3d8;
+}
+  .adviceButton:hover{
+    color:#24a3d8;
+    background-color: white; 
+  }
+  .adviceButton2{
+    color:white;
+    background-color: #24a3d8;
+  }
+    .adviceButton2:hover{
+      color:#24a3d8;
+      background-color: white; 
+    }
+
+    .fromTop1 { background:linear-gradient(rgba(85, 192, 241, 0.822),rgba(224, 93, 137, 0.801));
+
+    }
+   
+   .lr-color {  background: linear-gradient(to top, #485563, #29323c);
+    color: white;
+
+    }
+
+    .panel-primary { background: linear-gradient(to top, #485563, #29323c);
+      color: #24a3d8;
+
+    }
+    .btnstyle  { color: #fff;
+      background-color:#24a3d8; 
+
+}
+
+.btnstyle:hover { color:#24a3d8; 
+              background-color: #fff;
+
+}
+
+.modal-header {font-size: 30px;
+  background-color:#24a3d8; 
+color:#fff; }
+.zero {
+  background-color:#24a3d8; 
+  color:#fff; 
+}

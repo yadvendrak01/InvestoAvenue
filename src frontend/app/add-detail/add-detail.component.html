@@ -1,0 +1,529 @@
+ <div class="fromTop1">
+
+    <section style="background-image: url(./assets/bg-image-2.jpg); background-size: cover; margin-top: 50px;" class="bg-gray-darker">
+      <div class="inside">
+      <h1 > <b> What we do </b></h1> <hr>
+      <p>We provide expert financial advice for businesses and individuals </p>
+        <button class="btn adviceButton" *ngIf="client.typeOfClient=='individual'" (click)="getAdvice()" data-toggle="modal" data-target="#clientModal"> <b>Click to Get Advice </b></button>
+        <button class="btn adviceButton" *ngIf="client.typeOfClient=='mediumScaleIndustries'||client.typeOfClient=='corporates'" (click)="getAdvice()" data-toggle="modal" data-target="#mediumCorpModal"> <b>Click to Get Advice </b></button>
+        
+        <p style="margin-top:50px;" *ngIf="client.detail=='1'">Want to Update Your Financial Details <button class="btn btnstyle" (click)="showUpdateForm()" >click here</button> </p>
+      </div>
+      
+    </section>
+
+ <div *ngIf="client.detail=='0' && showForm">
+<div *ngIf="client.typeOfClient=='individual'">
+  <div class="row fromTop">
+    <div class="col-md-6 col-md-offset-3" >
+      <div class="panel lr-color">
+        <div class="panel-heading lr-color"><h2 style="text-align:center">Add Your Details :</h2></div>
+        <div class="panel-body lr-color">
+          <h3> Enter below details to seek advice</h3>
+          <span class="text-danger">
+            <ul>
+              <li>All Fields are compulsary.</li>
+              <li>Provide 0 if any detail is not available.</li>
+              <li>Hover on <i class="glyphicon glyphicon-info-sign"></i> presenet on right side of each field  to know more about particular field.</li>
+              <li>You will get  <i style="color:green;" class="fa fa-check-circle-o"></i> on filling each component correctly.</li>
+            </ul>
+
+          </span>
+        <form class="" [formGroup]="addDetailsForm">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading  zero"><h3 >Your Assets :</h3></div>
+                <div class="panel-body "> 
+            <fieldset formGroupName="assets">
+          <div class="form-group">
+            <label for="name"> Cash : </label><a ><i data-toggle="tooltip" title="Total Cash amount you are having!" data-placement="left" style="float: right"  class="glyphicon glyphicon-info-sign"></i></a>
+
+            <input type="number" id="name"  formControlName="cash"class="form-control">
+            <span class="text-danger" *ngIf="addDetailsForm.controls.assets.controls.cash.invalid && addDetailsForm.controls.assets.controls.cash.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="name"> Checking Accounts :</label><a  ><i data-toggle="tooltip" title="Total Amount present in your checking account" data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+            <input type="number" id="name"  formControlName="checkingAccounts"class="form-control">
+            <span class="text-danger" *ngIf="addDetailsForm.controls.assets.controls.checkingAccounts.invalid && addDetailsForm.controls.assets.controls.checkingAccounts.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="name"> Savings :</label><a><i style="float: right" data-toggle="tooltip" title="Total amount present in your Savings account." data-placement="left" class="glyphicon glyphicon-info-sign"></i></a>
+            <input type="number" id="saving"  formControlName="saving"class="form-control">
+            <span class="text-danger" *ngIf="addDetailsForm.controls.assets.controls.saving.invalid && addDetailsForm.controls.assets.controls.saving.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="name"> Cash of Life Insurance :</label><a><i  data-toggle="tooltip" title="Total amount used on cash of Life Insurance." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+            <input type="number" id="name"  formControlName="cashOfLifeInsurance"class="form-control">
+            <span class="text-danger" *ngIf="addDetailsForm.controls.assets.controls.cashOfLifeInsurance.invalid && addDetailsForm.controls.assets.controls.cashOfLifeInsurance.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="name"> Retirement Account :</label><a ><i data-toggle="tooltip" title="Total amount you will be getting after retirement." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+            <input type="number" id="saving"  formControlName="retirement"class="form-control">
+            <span class="text-danger" *ngIf="addDetailsForm.controls.assets.controls.retirement.invalid && addDetailsForm.controls.assets.controls.retirement.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+          </div>
+  
+          <div class="form-group">
+            <label for="name"> Properties Value :</label><a><i data-toggle="tooltip" title="Total current market value of your all Properties." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+            <input type="number" id="saving"  formControlName="properties"class="form-control">
+            <span class="text-danger" *ngIf="addDetailsForm.controls.assets.controls.properties.invalid && addDetailsForm.controls.assets.controls.properties.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+          </div>
+
+          <div class="form-group">
+              <label for="name"> Number of Vehicles :</label><a ><i  data-toggle="tooltip" title="Total number of vehicles you are having including Bikes,Cars,etc." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+              <input type="number" id="saving"  formControlName="noOfVehicles"class="form-control">
+              <span class="text-danger" *ngIf="addDetailsForm.controls.assets.controls.noOfVehicles.invalid && addDetailsForm.controls.assets.controls.noOfVehicles.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+            </div>
+  
+            <div class="form-group">
+              <label for="name"> Medical Insurance Taken :</label>
+              <input type="radio" id="medicalInsurance1" value="true" formControlName="medicalInsurance">Taken &nbsp;&nbsp;&nbsp;
+              <input type="radio" id="medicalInsurance2" value="false" formControlName="medicalInsurance">Not-Taken &nbsp;&nbsp;&nbsp;
+              <span class="text-danger" *ngIf="addDetailsForm.controls.assets.controls.medicalInsurance.invalid && addDetailsForm.controls.assets.controls.medicalInsurance.dirty"> This field is Required.Specify Yes or No.</span>
+            </div>
+            <i *ngIf="addDetailsForm.controls.assets.valid && addDetailsForm.controls.assets.dirty" style="float:right;color:green;font-size:3rem;" class="fa fa-check-circle-o"></i>
+          </fieldset>
+          </div>
+          </div>
+          <div class="panel panel-primary">
+              <div class="panel-heading "><h3> Your Liabilities :</h3></div>
+              <div class="panel-body ">
+            
+            <fieldset formGroupName="liabilities">
+          <div class="form-group">
+            <label for="name"> Mortage Balance :</label><a ><i  data-toggle="tooltip" title="checking" data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+            <input type="number" id="saving"  formControlName="mortageBalance"class="form-control">
+            <span class="text-danger" *ngIf="addDetailsForm.controls.liabilities.controls.mortageBalance.invalid && addDetailsForm.controls.liabilities.controls.mortageBalance.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="name"> Credit Card Limit :</label><a><i  data-toggle="tooltip" title="Total Credit Card limit of your all cards." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+            <input type="number" id="saving"  formControlName="creditCardLimit"class="form-control">
+            <span class="text-danger" *ngIf="addDetailsForm.controls.liabilities.controls.creditCardLimit.invalid && addDetailsForm.controls.liabilities.controls.creditCardLimit.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+          </div>
+          
+          <div class="form-group">
+            <label for="name"> Bank Loan :</label><a><i  data-toggle="tooltip" title="Total amount of Bank Loan you have taken." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+            <input type="number" id="saving"  formControlName="bankLoan"class="form-control">
+            <span class="text-danger" *ngIf="addDetailsForm.controls.liabilities.controls.bankLoan.invalid && addDetailsForm.controls.liabilities.controls.bankLoan.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+          </div>
+
+          <div class="form-group">
+              <label for="name">EMIs:</label><a><i  data-toggle="tooltip" title="Total EMIs you Pay Yearly." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+              <input type="number" id="saving"  formControlName="emis"class="form-control">
+              <span class="text-danger" *ngIf="addDetailsForm.controls.liabilities.controls.emis.invalid && addDetailsForm.controls.liabilities.controls.emis.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+            </div>
+            <i *ngIf="addDetailsForm.controls.liabilities.valid && addDetailsForm.controls.liabilities.dirty" style="float:right;color:green;font-size:3rem;" class="fa fa-check-circle-o"></i>
+            </fieldset>
+            </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading zero"><h3>Your Expenditure :</h3></div>
+                <div class="panel-body ">
+            
+
+            
+            <fieldset formGroupName="expenses">
+            <div class="form-group">
+                <label for="name"> Income :</label><a><i  data-toggle="tooltip" title="Your Annual Income." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                <input type="number" id="saving"  formControlName="income"class="form-control">
+                <span class="text-danger" *ngIf="addDetailsForm.controls.expenses.controls.income.invalid && addDetailsForm.controls.expenses.controls.income.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+              </div>
+    
+              <div class="form-group">
+                  <label for="name">Expenditure :</label><a><i  data-toggle="tooltip" title="Your total approximate expenses.yearly." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                  <input type="number" id="saving"  formControlName="expenditure"class="form-control">
+                  <span class="text-danger" *ngIf="addDetailsForm.controls.expenses.controls.expenditure.invalid && addDetailsForm.controls.expenses.controls.expenditure.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+                </div>
+                <i *ngIf="addDetailsForm.controls.expenses.valid && addDetailsForm.controls.expenses.dirty" style="float:right;color:green;font-size:3rem;" class="fa fa-check-circle-o"></i>
+                </fieldset>
+                </div>
+                </div>
+
+          <div class="form-group">
+              <button class="btn btnstyle" (click)="addDetails()" [disabled]="addDetailsForm.invalid || addDetailsForm.pristine" >Save Details</button>
+          </div>   
+        </form>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  <div class="fromTop" *ngIf="client.typeOfClient=='mediumScaleIndustries'||client.typeOfClient=='corporates'">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3" >
+        <div class="panel lr-color">
+          <div class="panel-heading lr-color"><h2 style="text-align:center">Add Your Details :</h2></div>
+          <div class="panel-body lr-color"> 
+            <h3> Enter below details to seek advice</h3>
+            <span class="text-danger">
+              <ul>
+                <li>All Fields are compulsary.</li>
+                <li>Provide 0 if any detail is not available.</li>
+                <li>Hover on <i class="glyphicon glyphicon-info-sign"></i> presenet on right side of each field  to know more about particular field.</li>
+                <li>You will get  <i style="color:green;" class="fa fa-check-circle-o"></i> on filling each component correctly.</li>
+              </ul>
+  
+            </span>
+            <form class="" [formGroup]="mediumCorpForm">
+  
+                <div class="panel panel-primary">
+                    <div class="panel-heading zero"><h3 >Your Details :</h3></div>
+                    <div class="panel-body "> 
+                <fieldset formGroupName="corporate">
+              <div class="form-group">
+                <label for="name"> Cash : </label><a ><i data-toggle="tooltip" title="Total Cash amount you are having!" data-placement="left" style="float: right"  class="glyphicon glyphicon-info-sign"></i></a>
+    
+                <input type="number" id="name"  formControlName="cash"class="form-control">
+                <span class="text-danger" *ngIf="mediumCorpForm.controls.corporate.controls.cash.invalid && mediumCorpForm.controls.corporate.controls.cash.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+              </div>
+    
+              <div class="form-group">
+                <label for="name">Account :</label><a  ><i data-toggle="tooltip" title="Total Amount present in your checking account" data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                <input type="number" id="name"  formControlName="account"class="form-control">
+                <span class="text-danger" *ngIf="mediumCorpForm.controls.corporate.controls.account.invalid && mediumCorpForm.controls.corporate.controls.account.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+              </div>
+    
+              <div class="form-group">
+                <label for="name"> Debts :</label><a><i style="float: right" data-toggle="tooltip" title="Total amount present in your Savings account." data-placement="left" class="glyphicon glyphicon-info-sign"></i></a>
+                <input type="number" id="saving"  formControlName="debts"class="form-control">
+                <span class="text-danger" *ngIf="mediumCorpForm.controls.corporate.controls.debts.invalid && mediumCorpForm.controls.corporate.controls.debts.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+              </div>
+    
+              <div class="form-group">
+                <label for="name"> Property :</label><a><i  data-toggle="tooltip" title="Total amount used on cash of Life Insurance." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                <input type="number" id="name"  formControlName="property"class="form-control">
+                <span class="text-danger" *ngIf="mediumCorpForm.controls.corporate.controls.property.invalid && mediumCorpForm.controls.corporate.controls.property.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+              </div>
+    
+              <div class="form-group">
+                <label for="name"> Net Profit :</label><a ><i data-toggle="tooltip" title="Total amount you will be getting after retirement." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                <input type="number" id="saving"  formControlName="netProfit"class="form-control">
+                <span class="text-danger" *ngIf="mediumCorpForm.controls.corporate.controls.netProfit.invalid && mediumCorpForm.controls.corporate.controls.netProfit.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+              </div>
+              <i *ngIf="mediumCorpForm.controls.corporate.valid && mediumCorpForm.controls.corporate.dirty" style="float:right;color:green;font-size:3rem;" class="fa fa-check-circle-o"></i>
+                </fieldset>
+              <div class="form-group">
+                  <button class="btn btnstyle" (click)="addDetailsMediumCorporate()" [disabled]="mediumCorpForm.invalid || mediumCorpForm.pristine" >Save Details</button>
+              </div>
+              
+                    </div>
+                    </div>   
+            </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <div *ngIf="showUpdate">
+        <div *ngIf="client.typeOfClient=='individual'">
+          <div class="row fromTop">
+            <div class="col-md-6 col-md-offset-3" >
+              <div class="panel lr-color">
+                <div class="panel-heading lr-color"><h2 style="text-align:center">Update Your Details :</h2></div>
+                <div class="panel-body lr-color">
+                  <h3> Enter below details to seek advice</h3>
+                  <span class="text-danger">
+                    <ul>
+                      <li>All Fields are compulsary.</li>
+                      <li>Provide 0 if any detail is not available.</li>
+                      <li>Hover on <i class="glyphicon glyphicon-info-sign"></i> presenet on right side of each field  to know more about particular field.</li>
+                      <li>You will get  <i style="color:green;" class="fa fa-check-circle-o"></i> on filling each component correctly.</li>
+                    </ul>
+        
+                  </span>
+                <form class="" [formGroup]="addDetailsForm">
+        
+                    <div class="panel panel-primary">
+                        <div class="panel-heading zero"><h3 >Your Assets :</h3></div>
+                        <div class="panel-body "> 
+                    <fieldset formGroupName="assets">
+                  <div class="form-group">
+                    <label for="name"> Cash : </label><a ><i data-toggle="tooltip" title="Total Cash amount you are having!" data-placement="left" style="float: right"  class="glyphicon glyphicon-info-sign"></i></a>
+        
+                    <input type="number" id="name"  formControlName="cash"class="form-control">
+                    <span class="text-danger" *ngIf="addDetailsForm.controls.assets.controls.cash.invalid && addDetailsForm.controls.assets.controls.cash.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                  </div>
+        
+                  <div class="form-group">
+                    <label for="name"> Checking Accounts :</label><a  ><i data-toggle="tooltip" title="Total Amount present in your checking account" data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                    <input type="number" id="name"  formControlName="checkingAccounts"class="form-control">
+                    <span class="text-danger" *ngIf="addDetailsForm.controls.assets.controls.checkingAccounts.invalid && addDetailsForm.controls.assets.controls.checkingAccounts.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                  </div>
+        
+                  <div class="form-group">
+                    <label for="name"> Savings :</label><a><i style="float: right" data-toggle="tooltip" title="Total amount present in your Savings account." data-placement="left" class="glyphicon glyphicon-info-sign"></i></a>
+                    <input type="number" id="saving"  formControlName="saving"class="form-control">
+                    <span class="text-danger" *ngIf="addDetailsForm.controls.assets.controls.saving.invalid && addDetailsForm.controls.assets.controls.saving.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                  </div>
+        
+                  <div class="form-group">
+                    <label for="name"> Cash of Life Insurance :</label><a><i  data-toggle="tooltip" title="Total amount used on cash of Life Insurance." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                    <input type="number" id="name"  formControlName="cashOfLifeInsurance"class="form-control">
+                    <span class="text-danger" *ngIf="addDetailsForm.controls.assets.controls.cashOfLifeInsurance.invalid && addDetailsForm.controls.assets.controls.cashOfLifeInsurance.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+                  </div>
+        
+                  <div class="form-group">
+                    <label for="name"> Retirement Account :</label><a ><i data-toggle="tooltip" title="Total amount you will be getting after retirement." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                    <input type="number" id="saving"  formControlName="retirement"class="form-control">
+                    <span class="text-danger" *ngIf="addDetailsForm.controls.assets.controls.retirement.invalid && addDetailsForm.controls.assets.controls.retirement.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                  </div>
+          
+                  <div class="form-group">
+                    <label for="name"> Properties Value :</label><a><i data-toggle="tooltip" title="Total current market value of your all Properties." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                    <input type="number" id="saving"  formControlName="properties"class="form-control">
+                    <span class="text-danger" *ngIf="addDetailsForm.controls.assets.controls.properties.invalid && addDetailsForm.controls.assets.controls.properties.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+                  </div>
+        
+                  <div class="form-group">
+                      <label for="name"> Number of Vehicles :</label><a ><i  data-toggle="tooltip" title="Total number of vehicles you are having including Bikes,Cars,etc." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                      <input type="number" id="saving"  formControlName="noOfVehicles"class="form-control">
+                      <span class="text-danger" *ngIf="addDetailsForm.controls.assets.controls.noOfVehicles.invalid && addDetailsForm.controls.assets.controls.noOfVehicles.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+                    </div>
+          
+                    <div class="form-group">
+                      <label for="name"> Medical Insurance Taken :</label>
+                      <input type="radio" id="medicalInsurance1" value="true" formControlName="medicalInsurance">Taken &nbsp;&nbsp;&nbsp;
+                      <input type="radio" id="medicalInsurance2" value="false" formControlName="medicalInsurance">Not-Taken &nbsp;&nbsp;&nbsp;
+                      <span class="text-danger" *ngIf="addDetailsForm.controls.assets.controls.medicalInsurance.invalid && addDetailsForm.controls.assets.controls.medicalInsurance.dirty"> This field is Required.Specify Yes or No.</span>
+                    </div>
+                    <i *ngIf="addDetailsForm.controls.assets.valid && addDetailsForm.controls.assets.dirty" style="float:right;color:green;font-size:3rem;" class="fa fa-check-circle-o"></i>
+                  </fieldset>
+                  </div>
+                  </div>
+                  <div class="panel panel-primary">
+                      <div class="panel-heading zero "><h3> Your Liabilities :</h3></div>
+                      <div class="panel-body ">
+                    
+                    <fieldset formGroupName="liabilities">
+                  <div class="form-group">
+                    <label for="name"> Mortage Balance :</label><a ><i  data-toggle="tooltip" title="checking" data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                    <input type="number" id="saving"  formControlName="mortageBalance"class="form-control">
+                    <span class="text-danger" *ngIf="addDetailsForm.controls.liabilities.controls.mortageBalance.invalid && addDetailsForm.controls.liabilities.controls.mortageBalance.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+                  </div>
+        
+                  <div class="form-group">
+                    <label for="name"> Credit Card Limit :</label><a><i  data-toggle="tooltip" title="Total Credit Card limit of your all cards." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                    <input type="number" id="saving"  formControlName="creditCardLimit"class="form-control">
+                    <span class="text-danger" *ngIf="addDetailsForm.controls.liabilities.controls.creditCardLimit.invalid && addDetailsForm.controls.liabilities.controls.creditCardLimit.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="name"> Bank Loan :</label><a><i  data-toggle="tooltip" title="Total amount of Bank Loan you have taken." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                    <input type="number" id="saving"  formControlName="bankLoan"class="form-control">
+                    <span class="text-danger" *ngIf="addDetailsForm.controls.liabilities.controls.bankLoan.invalid && addDetailsForm.controls.liabilities.controls.bankLoan.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+                  </div>
+        
+                  <div class="form-group">
+                      <label for="name">EMIs:</label><a><i  data-toggle="tooltip" title="Total EMIs you Pay Yearly." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                      <input type="number" id="saving"  formControlName="emis"class="form-control">
+                      <span class="text-danger" *ngIf="addDetailsForm.controls.liabilities.controls.emis.invalid && addDetailsForm.controls.liabilities.controls.emis.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+                    </div>
+                    <i *ngIf="addDetailsForm.controls.liabilities.valid && addDetailsForm.controls.liabilities.dirty" style="float:right;color:green;font-size:3rem;" class="fa fa-check-circle-o"></i>
+                    </fieldset>
+                    </div>
+                    </div>
+        
+                    <div class="panel panel-primary">
+                        <div class="panel-heading zero"><h3>Your Expenditure :</h3></div>
+                        <div class="panel-body ">
+                    
+        
+                    
+                    <fieldset formGroupName="expenses">
+                    <div class="form-group">
+                        <label for="name"> Income :</label><a><i  data-toggle="tooltip" title="Your Annual Income." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                        <input type="number" id="saving"  formControlName="income"class="form-control">
+                        <span class="text-danger" *ngIf="addDetailsForm.controls.expenses.controls.income.invalid && addDetailsForm.controls.expenses.controls.income.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+                      </div>
+            
+                      <div class="form-group">
+                          <label for="name">Expenditure :</label><a><i  data-toggle="tooltip" title="Your total approximate expenses.yearly." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                          <input type="number" id="saving"  formControlName="expenditure"class="form-control">
+                          <span class="text-danger" *ngIf="addDetailsForm.controls.expenses.controls.expenditure.invalid && addDetailsForm.controls.expenses.controls.expenditure.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+                        </div>
+                        <i *ngIf="addDetailsForm.controls.expenses.valid && addDetailsForm.controls.expenses.dirty" style="float:right;color:green;font-size:3rem;" class="fa fa-check-circle-o"></i>
+                        </fieldset>
+                        </div>
+                        </div>
+        
+                  <div class="form-group">
+                      <button class="btn btnstyle" (click)="updateDetailsofClient()" [disabled]="addDetailsForm.invalid || addDetailsForm.pristine" >Update Details</button>
+                  </div>   
+                </form>
+          </div>
+          </div>
+          </div>
+          </div>
+          </div>
+        
+          <div class="fromTop" *ngIf="client.typeOfClient=='mediumScaleIndustries'||client.typeOfClient=='corporates'">
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3" >
+                <div class="panel lr-color">
+                  <div class="panel-heading lr-color"><h2 style="text-align:center">Update Your  Details :</h2></div>
+                  <div class="panel-body lr-color"> 
+                    <h3> Enter below details to seek advice</h3>
+                    <span class="text-danger">
+                      <ul>
+                        <li>All Fields are compulsary.</li>
+                        <li>Provide 0 if any detail is not available.</li>
+                        <li>Hover on <i class="glyphicon glyphicon-info-sign"></i> presenet on right side of each field  to know more about particular field.</li>
+                        <li>You will get  <i style="color:green;" class="fa fa-check-circle-o"></i> on filling each component correctly.</li>
+                      </ul>
+          
+                    </span>
+                    <form class="" [formGroup]="mediumCorpForm">
+          
+                        <div class="panel panel-primary">
+                            <div class="panel-heading zero"><h3 >Your Details :</h3></div>
+                            <div class="panel-body "> 
+                        <fieldset formGroupName="corporate">
+                      <div class="form-group">
+                        <label for="name"> Cash : </label><a ><i data-toggle="tooltip" title="Total Cash amount you are having!" data-placement="left" style="float: right"  class="glyphicon glyphicon-info-sign"></i></a>
+            
+                        <input type="number" id="name"  formControlName="cash"class="form-control">
+                        <span class="text-danger" *ngIf="mediumCorpForm.controls.corporate.controls.cash.invalid && mediumCorpForm.controls.corporate.controls.cash.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                      </div>
+            
+                      <div class="form-group">
+                        <label for="name">Account :</label><a  ><i data-toggle="tooltip" title="Total Amount present in your checking account" data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                        <input type="number" id="name"  formControlName="account"class="form-control">
+                        <span class="text-danger" *ngIf="mediumCorpForm.controls.corporate.controls.account.invalid && mediumCorpForm.controls.corporate.controls.account.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                      </div>
+            
+                      <div class="form-group">
+                        <label for="name"> Debts :</label><a><i style="float: right" data-toggle="tooltip" title="Total amount present in your Savings account." data-placement="left" class="glyphicon glyphicon-info-sign"></i></a>
+                        <input type="number" id="saving"  formControlName="debts"class="form-control">
+                        <span class="text-danger" *ngIf="mediumCorpForm.controls.corporate.controls.debts.invalid && mediumCorpForm.controls.corporate.controls.debts.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                      </div>
+            
+                      <div class="form-group">
+                        <label for="name"> Property :</label><a><i  data-toggle="tooltip" title="Total amount used on cash of Life Insurance." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                        <input type="number" id="name"  formControlName="property"class="form-control">
+                        <span class="text-danger" *ngIf="mediumCorpForm.controls.corporate.controls.property.invalid && mediumCorpForm.controls.corporate.controls.property.dirty">This field is Required. Put '0' if not applicable or not present.</span>
+                      </div>
+            
+                      <div class="form-group">
+                        <label for="name"> Net Profit :</label><a ><i data-toggle="tooltip" title="Total amount you will be getting after retirement." data-placement="left" style="float: right" class="glyphicon glyphicon-info-sign"></i></a>
+                        <input type="number" id="saving"  formControlName="netProfit"class="form-control">
+                        <span class="text-danger" *ngIf="mediumCorpForm.controls.corporate.controls.netProfit.invalid && mediumCorpForm.controls.corporate.controls.netProfit.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                      </div>
+                      <i *ngIf="mediumCorpForm.controls.corporate.valid && mediumCorpForm.controls.corporate.dirty" style="float:right;color:green;font-size:3rem;" class="fa fa-check-circle-o"></i>
+                        </fieldset>
+                      <div class="form-group">
+                          <button class="btn btnstyle" (click)="updateDetailsMediumCorporate()" [disabled]="mediumCorpForm.invalid || mediumCorpForm.pristine" >Update Details</button>
+                      </div>
+                      
+                            </div>
+                            </div>   
+                    </form>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+    </div>
+
+    <div style="text-align: center;padding-top: 50px;margin-bottom:50px;">
+      <h1 *ngIf="client.typeOfClient=='individual'">Want Investment Planning <a href='calculate-investment'  class="btn adviceButton2">Click here to Plan</a> </h1>
+</div>
+
+    <div *ngIf="client.detail=='1'" class="modal fade" id="clientModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"  style="font-size: 30px;" id="exampleModalLongTitle">Get Advice</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="clientGetAdvice">
+              <div class="form-group form-inline">
+                <div class="row">
+              <div class="col-md-5">  <label for="">Time Frame of Investment:</label></div>
+              <div class="col-md-5">   <input class="form-control" formControlName="time" type="number"></div> 
+                <span class="text-danger" *ngIf="clientGetAdvice.controls.time.invalid && clientGetAdvice.controls.time.dirty" style="font-size: 25px;"> **</span>
+              </div>
+              </div>
+              <div class="form-group form-inline">
+                  <div class="row">
+                      <div class="col-md-5">  <label for="">Number of Family Members:</label></div>
+                      <div class="col-md-5"> <input class="form-control" formControlName="family" type="number"> </div> 
+                <span class="text-danger" *ngIf="clientGetAdvice.controls.family.invalid && clientGetAdvice.controls.family.dirty" style="font-size: 25px;"> **</span>
+              </div>
+              </div>
+              <div class="form-group form-inline">
+                  <div class="row">
+                      <div class="col-md-5"> <label for="">Dependent Members :</label></div>
+                      <div class="col-md-5">  <input class="form-control" formControlName="dependents" type="number"></div>
+                <span class="text-danger" *ngIf="clientGetAdvice.controls.dependents.invalid && clientGetAdvice.controls.dependents.dirty" style="font-size: 25px;"> **</span>
+              </div>
+              </div>
+              <div class="form-group form-inline">
+                  <div class="row">
+                      <div class="col-md-5">  <label for="">Age of child :</label></div>
+                      <div class="col-md-5">   <input class="form-control" formControlName="age" type="number"></div> 
+                <span class="text-danger" *ngIf="clientGetAdvice.controls.age.invalid && clientGetAdvice.controls.age.dirty" style="font-size: 25px;"> **</span>
+              </div>
+              </div>
+              <button class="btn btnstyle" [disabled]="clientGetAdvice.invalid || clientGetAdvice.pristine" (click)="clientGenerateReport()" >Generate Report</button>
+              <span *ngIf="showWait" class="alert alert-info" style="color:red">  <b>Please Wait while we Generate Your Report! </b></span>
+              <div *ngIf="adviceMessage=='payNow'" class="alert alert-success" style="margin-top: 10px;">Your Report is Generated , click to pay and download: <a class="" href="payment">Pay & Download</a></div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="btn btn-secondary" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="client.detail=='1'" class="modal fade" id="mediumCorpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Advice</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="corpMediumAdvice">
+              <div class="form-group form-inline">
+                <label for="">Time Frame of Investment:</label>
+                <input class="form-control" formControlName="time" type="number"> 
+                <span class="text-danger" *ngIf="corpMediumAdvice.controls.time.invalid && corpMediumAdvice.controls.time.dirty" style="font-size: 25px;">**</span>
+              </div>
+              <div class="form-group form-inline">
+                <label for="">Number of Employees:</label>
+                <input class="form-control" formControlName="noOfEmployees" type="number"> 
+                <span class="text-danger" *ngIf="corpMediumAdvice.controls.noOfEmployees.invalid && corpMediumAdvice.controls.noOfEmployees.dirty" style="font-size: 25px;"> **</span>
+              </div>
+              <div class="form-group">
+                <label for="name"> Medical Plan for Employees:</label>
+                <input type="radio" id="medicalInsurance1" value="true" formControlName="medical">Taken &nbsp;&nbsp;&nbsp;
+                <input type="radio" id="medicalInsurance2" value="false" formControlName="medical">Not-Taken &nbsp;&nbsp;&nbsp;
+                <span class="text-danger" *ngIf="corpMediumAdvice.controls.medical.invalid && corpMediumAdvice.controls.medical.dirty" style="font-size: 25px;"> **</span>
+              </div>
+              <button class="btn btnstyle" *ngIf="client.typeOfClient=='mediumScaleIndustries'" [disabled]="corpMediumAdvice.invalid || corpMediumAdvice.pristine" (click)="mediumGenerateReport()" >Generate Report</button>
+              <button class="btn btnstyle" *ngIf="client.typeOfClient=='corporates'" [disabled]="corpMediumAdvice.invalid || corpMediumAdvice.pristine" (click)="corpGenerateReport()" >Generate Report</button>
+              <span *ngIf="showWait" class="alert alert-info" style="color:red">  <b>Please Wait while we Generate Your Report! </b></span>
+              <div *ngIf="adviceMessage=='payNow'" class="alert alert-success" style="margin-top: 10px;">Your Report is Generated , click to pay and download: <a class="" href="payment">Pay & Download</a></div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>

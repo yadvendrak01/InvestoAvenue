@@ -1,0 +1,256 @@
+<div *ngIf="client.detail!='0'" class="fromTop">
+  <div class="row"> 
+    <div class="col-md-4 col-md-offset-2">
+    <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="./assets/retirement investment.jpg"  style="width: 75%; " alt="Avatar" class="card-image">
+          </div>
+          <div class="flip-card-back">
+            <h1>Retirement Investement</h1> 
+            <p></p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#retire">
+                Explore
+              </button>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="col-md-4 col-md-offset-1">
+      <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="./assets/education investment.jpg"  style="width: 85%; " alt="Avatar" class="card-image">
+            </div>
+            <div class="flip-card-back">
+              <h1>Child Education</h1> 
+  
+  
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#childInvestment">
+                  Explore
+                </button>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        <div class="row fromTop">
+        <div class="col-md-4 col-md-offset-2" >
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <img src="./assets/home investment.jpg" alt="Avatar"  style="width: 80%; " class="card-image">
+                  </div>
+                  <div class="flip-card-back">
+                    <h1>Home Investment</h1> 
+        
+        
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#home">
+                        Explore
+                      </button>
+                  </div>
+                </div>
+              </div>
+              </div>
+  
+              <div class="col-md-4 col-md-offset-1">
+                  <div class="flip-card">
+                      <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                          <img src="./assets/car investment.jpg"  style="width: 65%; " alt="Avatar" class="card-image">
+                        </div>
+                        <div class="flip-card-back">
+                          <h1>Car </h1> 
+                          <!-- <p>Purchase Car </p>  -->
+              
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#car">
+                              Explore
+                            </button>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+  </div>    
+  </div>
+    
+  
+    
+
+
+
+        <!-- Modal -->
+        <div class="row">
+        <div class="modal fade" id="childInvestment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header zero">
+                <h5 class="modal-title" style="font-size: 30px;" id="exampleModalLongTitle">Child Education Investment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+               <form [formGroup]="educationDetailForm">
+                 <div class="form-group form-inline">
+                   <div class="row">
+                  <div class="col-md-5"><label for="">Age of child :</label></div>
+                  <div class="col-md-5"> <input class="form-control" formControlName="age" type="number"></div> <br>
+                   <span class="text-danger" *ngIf="educationDetailForm.controls.age.invalid && educationDetailForm.controls.age.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                  </div>
+                  </div>
+                 <div class="form-group form-inline">
+                    <div class="row">
+                        <div class="col-md-5"><label for="">Annual Collage Fee :</label> </div>
+                        <div class="col-md-5"> <input type="number" formControlName="fee" class="form-control">  </div><br>
+                   <span class="text-danger" *ngIf="educationDetailForm.controls.fee.invalid && educationDetailForm.controls.fee.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                  </div>
+                  </div>
+                 <div class="form-group form-inline">
+                    <div class="row">
+                        <div class="col-md-5"><label for="">Percentage of Saving you Want to use: </label> </div>
+                        <div class="col-md-5"> <input type="number" formControlName="percent" class="form-control"></div><br>
+                   <span class="text-danger" *ngIf="educationDetailForm.controls.percent.invalid && educationDetailForm.controls.percent.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                  </div>
+                  </div>
+                 <button class="btn btn-primary" (click)="educationDetailCalculate()"> Calculate</button> <br>
+                 <span *ngIf="educationValue!=null" class="text-success">You can achive this by saving Rs. {{educationValue | number:'1.2-2'}}  per month and investing in  a good mix of equity and dept funds .</span>
+               </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="retire" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header zero">
+                  <h5 class="modal-title" style="font-size: 30px;" id="exampleModalLongTitle">Retirement</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <button class="btn btn-primary" (click)="retireDetailCalculate()"> Calculate</button> <br>
+                 <span *ngIf="retireValue!=null" class="text-success">You can achive this by saving Rs. {{retireValue | number:'1.2-2'}}  per month and investing in  a good mix of equity and dept funds .</span>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="home" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header zero">
+                    <h5 class="modal-title" style="font-size: 30px;" id="exampleModalLongTitle">Home Investment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <form [formGroup]="homeDetailForm">
+                          <div class="form-group form-inline">
+                              <div class="row">
+                          <div class="col-md-5"> <label  for="">Cost of Home you want to buy:</label></div>
+                          <div class="col-md-5">  <input class="form-control" formControlName="price" type="number"> </div><br>
+                            <span class="text-danger" *ngIf="homeDetailForm.controls.price.invalid && homeDetailForm.controls.price.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                          </div>
+                          </div>
+                          <div class="form-group form-inline">
+                              <div class="row">
+                                  <div class="col-md-5"><label for="">When you want to buy home in years :</label> </div>
+                                  <div class="col-md-5"> <input type="number" class="form-control" formControlName="time"> </div> <br>
+                            <span class="text-danger" *ngIf="homeDetailForm.controls.time.invalid && homeDetailForm.controls.time.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                          </div>
+                          </div>
+                          <div class="form-group form-inline">
+                              <div class="row">
+                                  <div class="col-md-5"> <label for="">Percentage of Saving you Want to use: </label></div>
+                                  <div class="col-md-5"> <input type="number" class="form-control" formControlName="percent"> </div><br>
+                              <span class="text-danger" *ngIf="homeDetailForm.controls.percent.invalid && homeDetailForm.controls.percent.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                            </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <div class="row">
+                                    <div class="col-md-5"> <label for="">Wheather you want to sell any previous home ?: </label></div>
+                                    <div class="col-md-5"><input type="checkbox" (change)="getBoxHome()" formControlName="resale" value="yes" >Yes</div> <br>
+                                <!-- <input type="radio" (click)="getBox()" formControlName="resale" value="no">  No -->
+                             </div> 
+                            </div>
+                          <div class="form-group form-inline" *ngIf="showBox1">
+                              <div class="row">
+                                  <div class="col-md-5"> <label for="">Expected Resale Value of Home:</label></div>
+                                  <div class="col-md-5"> <input type="number" class="form-control" formControlName="resale"></div> <br>
+                            <span class="text-danger" *ngIf="homeDetailForm.controls.resale.invalid && homeDetailForm.controls.resale.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                          </div>
+                          </div>
+                          <button class="btn btn-primary" (click)="homeDetailCalculate()"> Calculate</button> <br>
+                          <span *ngIf="homeValue!=null" class="text-success">You can achive this by saving Rs. {{homeValue | number:'1.2-2'}}  per month and investing in  a good mix of equity and dept funds .</span>
+                        </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="modal fade" id="car" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header zero">
+                      <h5 class="modal-title" style="font-size: 30px;" id="exampleModalLongTitle">Car</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <form [formGroup]="carDetailForm">
+                            <div class="form-group form-inline">
+                              <div class="row">
+                             <div class="col-md-5"> <label  for="">Cost of car you want to buy:</label></div>
+                             <div class="col-md-5"> <input class="form-control" formControlName="price" type="number"></div> <br>
+                              <span class="text-danger" *ngIf="carDetailForm.controls.price.invalid && carDetailForm.controls.price.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                            </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <div class="row">
+                                    <div class="col-md-5"> <label for="">When you want to buy car in years :</label>  </div>
+                                    <div class="col-md-5"><input type="number" class="form-control" formControlName="time">  </div> <br>
+                              <span class="text-danger" *ngIf="carDetailForm.controls.time.invalid && carDetailForm.controls.time.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                            </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <div class="row">
+                                    <div class="col-md-5"><label for="">Percentage of Saving you Want to use: </label></div>
+                                    <div class="col-md-5"> <input type="number" class="form-control" formControlName="percent"></div> <br>
+                                <span class="text-danger" *ngIf="carDetailForm.controls.percent.invalid && carDetailForm.controls.percent.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                              </div>
+                              </div>
+                              <div class="form-group form-inline">
+                                  <div class="row">
+                                      <div class="col-md-5"> <label for="">Wheather you want to sell any previous cars ?: </label></div>
+                                      <div class="col-md-5"> <input type="checkbox" (change)="getBoxCar()" formControlName="resale" value="yes" >Yes</div> <br>
+                                  <!-- <input type="radio" (click)="getBox()" formControlName="resale" value="no">  No -->
+                                </div>
+                                </div>
+                            <div class="form-group form-inline" *ngIf="showBox">
+                              <label for="">Expected Resale Value of Car:</label>
+                              <input type="number" class="form-control" formControlName="resale"> <br>
+                              <span class="text-danger" *ngIf="carDetailForm.controls.resale.invalid && carDetailForm.controls.resale.dirty"> This field is Required. Put '0' if not applicable or not present.</span>
+                            </div>
+                            <button class="btn btn-primary" (click)="carDetailCalculate()"> Calculate</button>
+                          </form>
+    
+                          <span class="text-success" *ngIf="carValue!=null">You can achive this by saving Rs. {{carValue | number:'1.2-2'}} per month and investing in  a good mix of equity and dept funds .</span>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
